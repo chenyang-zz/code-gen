@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/providers/NextIntlProvider.tsx -> ../../../messages/zh.json\":{\"id\":\"components/providers/NextIntlProvider.tsx -> ../../../messages/zh.json\",\"files\":[\"static/chunks/_app-pages-browser_messages_zh_json.js\"]}}"
