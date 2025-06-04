@@ -12,9 +12,13 @@
 	"app": {
 		"windows": [
 			{
-				"title": "code-gen",
-				"width": 800,
-				"height": 600
+				"title": "CodeGen",
+				"label": "main",
+				"width": 1860,
+				"minWidth": 960,
+				"height": 1280,
+				"minHeight": 480,
+				"dragDropEnabled": false
 			}
 		],
 		"security": {

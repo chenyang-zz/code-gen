@@ -43,6 +43,12 @@ interface SettingState {
 	model: string;
 	setModel: (language: string) => void;
 
+	temperature: number;
+	setTemperature: (temperature: number) => void;
+
+	topP: number;
+	setTopP: (topP: number) => void;
+
 	placeholderModel: string;
 	setPlaceholderModel: (placeholderModel: string) => Promise<void>;
 
@@ -161,6 +167,20 @@ const useSettingStore = create<SettingState>((set, get) => ({
 		const store = await Store.load("store.json");
 		await store.set("model", model);
 		set({ model });
+	},
+
+	temperature: 0.7,
+	setTemperature: async (temperature) => {
+		const store = await Store.load("store.json");
+		await store.set("temperature", temperature);
+		set({ temperature });
+	},
+
+	topP: 1.0,
+	setTopP: async (topP) => {
+		const store = await Store.load("store.json");
+		await store.set("topP", topP);
+		set({ topP });
 	},
 
 	placeholderModel: "",

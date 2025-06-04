@@ -69,3 +69,70 @@ export interface AiConfig {
 	model?: string;
 	baseURL?: string;
 }
+
+export const baseAiConfig: AiConfig[] = [
+	{
+		key: "chatgpt",
+		title: "ChatGPT",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://api.openai.com/v1",
+	},
+	{
+		key: "gemini",
+		title: "Gemini",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://generativelanguage.googleapis.com/v1beta",
+	},
+	{
+		key: "grok",
+		title: "Grok",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://api.x.ai/v1",
+	},
+	{
+		key: "ollama",
+		title: "Ollama",
+		type: "built-in",
+		baseURL: "http://localhost:11434/v1",
+		temperature: 0.7,
+		topP: 1.0,
+	},
+	{
+		key: "lmstudio",
+		title: "LM Studio",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "http://localhost:1234/v1",
+	},
+	{
+		key: "deepseek",
+		title: "DeepSeek",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://api.deepseek.com",
+	},
+	{
+		key: "openrouter",
+		title: "OpenRouter",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://openrouter.ai/api/v1",
+	},
+	{
+		key: "siliconflow",
+		title: "SiliconFlow",
+		type: "built-in",
+		temperature: 0.7,
+		topP: 1.0,
+		baseURL: "https://api.siliconflow.cn/v1",
+	},
+];

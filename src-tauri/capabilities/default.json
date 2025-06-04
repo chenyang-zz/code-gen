@@ -5,6 +5,7 @@
 	"windows": ["main"],
 	"permissions": [
 		"core:default",
+		"shell:allow-open",
 		"sql:default",
 		"sql:allow-load",
 		"sql:allow-execute",
@@ -16,6 +17,8 @@
 		"store:allow-save",
 		"store:allow-load",
 		"fs:default",
+		"dialog:allow-confirm",
+		"dialog:default",
 		{
 			"identifier": "fs:scope",
 			"allow": [

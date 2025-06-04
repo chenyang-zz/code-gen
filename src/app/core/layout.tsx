@@ -1,11 +1,18 @@
+"use client";
 import AppSidebar from "@/components/AppSidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import useSettingStore from "@/stores/setting";
+import { useEffect } from "react";
 
 export default function CoreLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const { initSettingData } = useSettingStore();
+	useEffect(() => {
+		initSettingData();
+	}, []);
 	return (
 		<SidebarProvider>
 			<AppSidebar />

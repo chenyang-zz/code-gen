@@ -31,6 +31,21 @@
       "static/chunks/main-app.js",
       "static/chunks/app/core/setting/page.js"
     ],
+    "/core/setting/defaultModel/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/core/setting/defaultModel/page.js"
+    ],
+    "/core/setting/ai/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/core/setting/ai/page.js"
+    ],
+    "/core/setting/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/core/setting/about/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

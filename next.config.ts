@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
 	devIndicators: {
 		appIsrStatus: false,
 	},
+	reactStrictMode: false,
 	sassOptions: {
 		silenceDeprecations: ["legacy-js-api"],
 	},
