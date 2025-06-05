@@ -32,12 +32,11 @@ const Setting = ({ id, icon }: SettingProps) => {
 		},
 	];
 	return (
-		<SettingType id="id" icon={icon} title={t("title")} desc={t("desc")}>
+		<SettingType id={id} icon={icon} title={t("title")} desc={t("desc")}>
 			<SettingRow>
 				<FormItem title={t("mainModel")}>
 					<p>
-						{model}
-						{aiType}
+						{model}({aiType})
 					</p>
 				</FormItem>
 			</SettingRow>

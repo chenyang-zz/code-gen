@@ -34,7 +34,8 @@
 			"addPromptDesc": "マスク名と内容を入力し、AIがあなたのニーズをよりよく理解できるようにしてください。",
 			"promptTitlePlaceholder": "マスク名を入力してください",
 			"promptContentPlaceholder": "マスク内容を入力してください",
-			"promptContent": "マスク内容"
+			"promptContent": "マスク内容",
+			"deletePromptConfirm": "このマスクを削除してもよろしいですか？"
 		},
 		"defaultModel": {
 			"title": "デフォルトモデル",

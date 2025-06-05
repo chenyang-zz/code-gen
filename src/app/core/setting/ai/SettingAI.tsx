@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { v4 } from "uuid";
 import { confirm } from "@tauri-apps/plugin-dialog";
+import ModelSelect from "./ModelSelect";
 
 interface SettingAIProps {
 	id: string;
@@ -188,6 +189,7 @@ const SettingAI = ({ id, icon }: SettingAIProps) => {
 			if (!models) return;
 			const model = await getModelByStore(aiType);
 			if (!model) return;
+			setCurrentAi(model);
 			setApiKey(model.apiKey ?? "");
 			setBaseURL(model.baseURL ?? "");
 			setModel(model.model ?? "");
@@ -279,7 +281,7 @@ const SettingAI = ({ id, icon }: SettingAIProps) => {
 			</SettingRow>
 			<SettingRow>
 				<FormItem title="Model" desc={t("modelDesc")}>
-					{/* <ModelSelect /> */}
+					<ModelSelect />
 					<div></div>
 				</FormItem>
 			</SettingRow>

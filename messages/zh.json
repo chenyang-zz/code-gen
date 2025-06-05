@@ -34,7 +34,8 @@
 			"addPromptDesc": "请输入 Prompt 名称和内容，帮助AI更好地理解你的需求。",
 			"promptTitlePlaceholder": "请输入 Prompt 名称",
 			"promptContentPlaceholder": "请输入 Prompt 内容",
-			"promptContent": "Prompt 内容"
+			"promptContent": "Prompt 内容",
+			"deletePromptConfirm": "确认删除此 Prompt 配置吗?"
 		},
 		"defaultModel": {
 			"title": "默认模型",

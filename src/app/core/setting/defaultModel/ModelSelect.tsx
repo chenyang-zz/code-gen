@@ -1,9 +1,24 @@
+import { TooltipButton } from "@/components/TooltipButton";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import {
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
+} from "@/components/ui/command";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import useModelStore from "@/stores/model";
 import useSettingStore from "@/stores/setting";
 import { Store } from "@tauri-apps/plugin-store";
 import { useMount } from "ahooks";
+import { Check, Redo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useMemo, useState } from "react";
 
@@ -42,6 +57,18 @@ const ModelSelect = ({ modelKey }: ModelSelectProps) => {
 		}
 	}
 
+	const resetDefaultModel = async () => {
+		const store = await Store.load("store.json");
+		store.set(`${modelKey}AiType`, "");
+		setAiType("");
+	};
+
+	const modelSelectChangeHandler = async (key: string) => {
+		setAiType(key);
+		const store = await Store.load("store.json");
+		store.set(`${modelKey}AiType`, key);
+	};
+
 	useMount(() => {
 		const init = async () => {
 			initModels();
@@ -76,7 +103,48 @@ const ModelSelect = ({ modelKey }: ModelSelectProps) => {
 						</Button>
 					</div>
 				</PopoverTrigger>
+				{model && (
+					<TooltipButton
+						icon={<Redo2 className="size-4" />}
+						variant="default"
+						tooltipText={t("tooltip")}
+						onClick={resetDefaultModel}
+					/>
+				)}
 			</div>
+			<PopoverContent align="start" className="w-[480px] p-0">
+				<Command>
+					<CommandInput
+						placeholder={t("placeholder")}
+						className="h-9"
+					/>
+					<CommandList>
+						<CommandEmpty />
+						<CommandGroup>
+							{list.map((item) => (
+								<CommandItem
+									key={item.key}
+									value={item.key}
+									onSelect={(currentValue) => {
+										modelSelectChangeHandler(currentValue);
+										setOpen(false);
+									}}
+								>
+									{`${item.model}(${item.title})`}
+									<Check
+										className={cn(
+											"ml-auto",
+											model === item.key
+												? "opacity-100"
+												: "opacity-0"
+										)}
+									/>
+								</CommandItem>
+							))}
+						</CommandGroup>
+					</CommandList>
+				</Command>
+			</PopoverContent>
 		</Popover>
 	);
 };
