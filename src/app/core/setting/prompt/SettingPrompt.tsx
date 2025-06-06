@@ -1,5 +1,5 @@
 import usePromptStore, { type Prompt } from "@/stores/prompt";
-import { useMount } from "ahooks";
+import { useMount } from "@reactuses/core";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 import SettingType from "../components/SettingType";

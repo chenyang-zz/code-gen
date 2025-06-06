@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import useModelStore from "@/stores/model";
 import useSettingStore from "@/stores/setting";
 import { Store } from "@tauri-apps/plugin-store";
-import { useMount } from "ahooks";
+import { useMount } from "@reactuses/core";
 import { Check, Redo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useMemo, useState } from "react";

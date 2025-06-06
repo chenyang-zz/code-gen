@@ -3,7 +3,7 @@ import SettingType from "../components/SettingType";
 import { useTranslations } from "next-intl";
 import SettingRow from "../components/SettingRow";
 import FormItem from "../components/FormItem";
-import { useDebounceFn, useMount, useUpdateEffect } from "ahooks";
+import { useDebounceFn, useMount, useUpdateEffect } from "@reactuses/core";
 import {
 	Select,
 	SelectContent,
@@ -171,14 +171,11 @@ const SettingAI = ({ id, icon }: SettingAIProps) => {
 
 			saveModelByStore(model);
 		},
-		{ wait: 200 }
+		200
 	);
-	const { run: debounceGetModels } = useDebounceFn(
-		() => {
-			getModels();
-		},
-		{ wait: 200 }
-	);
+	const { run: debounceGetModels } = useDebounceFn(() => {
+		getModels();
+	}, 200);
 
 	useMount(() => {
 		initModels();

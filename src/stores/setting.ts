@@ -90,6 +90,9 @@ interface SettingState {
 	setAutoSync: (autoSync: string) => Promise<void>;
 
 	// Gitee 相关设置
+	giteeUsername: string;
+	setGiteeUsername: (giteeUesrname: string) => Promise<void>;
+
 	giteeAccessToken: string;
 	setGiteeAccessToken: (giteeAccessToken: string) => void;
 
@@ -295,6 +298,13 @@ const useSettingStore = create<SettingState>((set, get) => ({
 	},
 
 	// Gitee 相关设置
+	giteeUsername: "",
+	setGiteeUsername: async (giteeUsername) => {
+		set({ giteeUsername });
+		const store = await Store.load("store.json");
+		store.set("giteeUsername", giteeUsername);
+	},
+
 	giteeAccessToken: "",
 	setGiteeAccessToken: async (giteeAccessToken: string) => {
 		set({ giteeAccessToken });
