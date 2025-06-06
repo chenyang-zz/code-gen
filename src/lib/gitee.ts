@@ -1,8 +1,79 @@
 import { Store } from "@tauri-apps/plugin-store";
 import { fetch, Proxy } from "@tauri-apps/plugin-http";
-import type { OctokitResponse } from "./github.types";
+import type { OctokitResponse, RepoNames } from "./github.types";
 import { toast } from "sonner";
 import { GiteeError } from "./gitee.types";
+
+/**
+ * Base64 解码
+ */
+export function decodeBase64ToString(str: string) {
+	return decodeURIComponent(
+		atob(str)
+			.split("")
+			.map(function (c) {
+				return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+			})
+			.join("")
+	);
+}
+
+/**
+ * 获取文件
+ */
+export async function getFiles({
+	path,
+	repo,
+}: {
+	path: string;
+	repo: RepoNames.sync;
+}) {
+	const store = await Store.load("store.json");
+	const accessToken = await store.get<string>("giteeAccessToken");
+	if (!accessToken) return;
+
+	const giteeUsername = await store.get<string>("giteeUsername");
+	path = path.replace(/\s/g, "_");
+
+	// 获取代理设置
+	const proxyUrl = await store.get<string>("proxy");
+	const proxy: Proxy | undefined = proxyUrl
+		? {
+				all: proxyUrl,
+		  }
+		: undefined;
+
+	try {
+		let access_token_param = ``;
+
+		if (path.includes("?ref=")) {
+			access_token_param = `&access_token=${accessToken}`;
+		} else {
+			access_token_param = `?access_token=${accessToken}`;
+		}
+
+		const url = `https://gitee.com/api/v5/repos/${giteeUsername}/${repo}/contents/${path}${access_token_param}`;
+
+		const requestOptions = {
+			method: "GET",
+			proxy,
+		};
+
+		const response = await fetch(url, requestOptions);
+		if (response.status >= 200 && response.status < 300) {
+			const data = await response.json();
+			return data;
+		}
+		return null;
+	} catch (error) {
+		if ((error as GiteeError).status !== 404) {
+			toast("查询失败", {
+				description: (error as GiteeError).message,
+			});
+		}
+		return null;
+	}
+}
 
 /**
  * 获取 Gitee 用户信息

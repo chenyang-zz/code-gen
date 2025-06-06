@@ -1,8 +1,9 @@
 "use client";
 import AppSidebar from "@/components/AppSidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { initAllDatabases } from "@/db";
 import useSettingStore from "@/stores/setting";
-import { useEffect } from "react";
+import { useMount } from "@reactuses/core";
 
 export default function CoreLayout({
 	children,
@@ -10,9 +11,10 @@ export default function CoreLayout({
 	children: React.ReactNode;
 }>) {
 	const { initSettingData } = useSettingStore();
-	useEffect(() => {
+	useMount(() => {
 		initSettingData();
-	}, []);
+		initAllDatabases();
+	});
 	return (
 		<SidebarProvider>
 			<AppSidebar />

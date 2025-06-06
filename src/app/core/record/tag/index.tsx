@@ -6,7 +6,7 @@ import {
 	CommandInput,
 	CommandList,
 } from "@/components/ui/command";
-import { initTagsDb, type Tag } from "@/db/tags";
+import { type Tag } from "@/db/tags";
 import useTagStore from "@/stores/tag";
 import { ArrowUpDown, Lightbulb, TagIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -45,7 +45,6 @@ const TagManage = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			await initTagsDb();
 			await fetchTags();
 			await initTags();
 		};

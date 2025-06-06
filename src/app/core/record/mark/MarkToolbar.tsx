@@ -17,16 +17,11 @@ import ControllerImage from "./ControllerImage";
 import ControllerFile from "./ControllerFile";
 import ControllerText from "./ControllerText";
 import ControllerLink from "./ControllerLink";
-import { initMarksDb } from "@/db/marks";
 
 const MarkToolbar = () => {
 	const t = useTranslations();
 	const { trashState, setTrashState, fetchAllTrashMarks, fetchMarks } =
 		useMarkStore();
-
-	useEffect(() => {
-		initMarksDb();
-	}, []);
 
 	useEffect(() => {
 		if (trashState) {

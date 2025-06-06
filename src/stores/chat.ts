@@ -55,7 +55,6 @@ const useChatStore = create<ChatState>((set, get) => ({
 	},
 	chats: [],
 	init: async (tagId: number) => {
-		await initChatsDb();
 		const data = await getChats(tagId);
 		set({ chats: data });
 	},

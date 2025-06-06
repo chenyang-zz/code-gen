@@ -101,6 +101,24 @@ export interface GiteeUserInfo {
 	updated_at: string;
 }
 
+interface Links {
+	self: string;
+	html: string;
+}
+
+export interface GiteeFile {
+	name: string;
+	path: string;
+	sha: string;
+	size: number;
+	url: string;
+	html_url: string;
+	download_url: string;
+	type: string;
+	_links: Links;
+	isNew?: boolean;
+}
+
 // Gitee Error 类型，与 GitHub 保持一致
 export interface GiteeError {
 	status: number;

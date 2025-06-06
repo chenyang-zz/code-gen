@@ -1,1 +1,7 @@
-{}
+{
+  "/core/setting/file/page": "app/core/setting/file/page.js",
+  "/core/setting/template/page": "app/core/setting/template/page.js",
+  "/core/setting/prompt/page": "app/core/setting/prompt/page.js",
+  "/core/setting/ai/page": "app/core/setting/ai/page.js",
+  "/core/setting/defaultModel/page": "app/core/setting/defaultModel/page.js"
+}
