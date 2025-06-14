@@ -106,6 +106,8 @@
 					"url": "http://localhost:11434"
 				}
 			]
-		}
+		},
+		"core:window:default",
+		"core:window:allow-close"
 	]
 }

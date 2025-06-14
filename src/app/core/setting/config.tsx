@@ -59,6 +59,14 @@ export const baseConfig = [
 	},
 ];
 
+export type ModelType =
+	| "chat"
+	| "image"
+	| "video"
+	| "audio"
+	| "embedding"
+	| "rerank";
+
 export interface AiConfig {
 	key: string;
 	title: string;
@@ -68,6 +76,7 @@ export interface AiConfig {
 	apiKey?: string;
 	model?: string;
 	baseURL?: string;
+	modelType?: ModelType;
 }
 
 export const baseAiConfig: AiConfig[] = [
@@ -78,6 +87,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://api.openai.com/v1",
+		modelType: "chat",
 	},
 	{
 		key: "gemini",
@@ -86,6 +96,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://generativelanguage.googleapis.com/v1beta",
+		modelType: "chat",
 	},
 	{
 		key: "grok",
@@ -94,6 +105,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://api.x.ai/v1",
+		modelType: "chat",
 	},
 	{
 		key: "ollama",
@@ -102,6 +114,7 @@ export const baseAiConfig: AiConfig[] = [
 		baseURL: "http://localhost:11434/v1",
 		temperature: 0.7,
 		topP: 1.0,
+		modelType: "chat",
 	},
 	{
 		key: "lmstudio",
@@ -110,6 +123,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "http://localhost:1234/v1",
+		modelType: "chat",
 	},
 	{
 		key: "deepseek",
@@ -118,6 +132,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://api.deepseek.com",
+		modelType: "chat",
 	},
 	{
 		key: "openrouter",
@@ -126,6 +141,7 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://openrouter.ai/api/v1",
+		modelType: "chat",
 	},
 	{
 		key: "siliconflow",
@@ -134,5 +150,6 @@ export const baseAiConfig: AiConfig[] = [
 		temperature: 0.7,
 		topP: 1.0,
 		baseURL: "https://api.siliconflow.cn/v1",
+		modelType: "chat",
 	},
 ];

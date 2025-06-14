@@ -4,7 +4,6 @@ import {
 	clearChatsByTagId,
 	deleteChat,
 	getChats,
-	initChatsDb,
 	insertChat,
 	updateChat,
 	updateChatsInsertedById,
@@ -20,7 +19,7 @@ interface ChatState {
 	setIsLinkMark: (isLinkMark: boolean) => void;
 
 	isPlaceholderEnabled: boolean; // 是否启用AI提示占位符
-	setPlaceholderEnabled: (isEnabled: boolean) => void;
+	setIsPlaceholderEnabled: (isEnabled: boolean) => void;
 
 	chats: Chat[];
 	init: (tagId: number) => Promise<void>; // 初始化 chats
@@ -50,7 +49,7 @@ const useChatStore = create<ChatState>((set, get) => ({
 	},
 
 	isPlaceholderEnabled: true,
-	setPlaceholderEnabled: (isEnabled: boolean) => {
+	setIsPlaceholderEnabled: (isEnabled: boolean) => {
 		set({ isPlaceholderEnabled: isEnabled });
 	},
 	chats: [],

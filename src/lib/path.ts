@@ -33,3 +33,22 @@ export function getCurrentFolder(path: string, fileTree: DirTree[]) {
 
 	return currentFolder;
 }
+
+/**
+ * 计算父目录路径
+ * @param item 文件夹
+ * @returns
+ */
+export function computedParentPath(item: DirTree) {
+	let path = item.name;
+	function readParentPath(item: DirTree) {
+		if (item.parent) {
+			path = item.parent.name + "/" + path;
+			if (item.parent.parent) {
+				readParentPath(item.parent);
+			}
+		}
+	}
+	readParentPath(item);
+	return path;
+}

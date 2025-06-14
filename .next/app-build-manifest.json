@@ -31,40 +31,30 @@
       "static/chunks/main-app.js",
       "static/chunks/app/core/setting/page.js"
     ],
-    "/core/setting/ai/page": [
+    "/core/setting/theme/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/ai/page.js"
-    ],
-    "/core/setting/defaultModel/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/defaultModel/page.js"
-    ],
-    "/core/setting/sync/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/sync/page.js"
+      "static/chunks/app/core/setting/theme/page.js"
     ],
     "/core/setting/template/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/core/setting/template/page.js"
     ],
-    "/core/setting/prompt/page": [
+    "/core/article/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/prompt/page.js"
+      "static/chunks/app/core/article/page.js"
     ],
-    "/core/setting/file/page": [
+    "/core/setting/defaultModel/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/file/page.js"
+      "static/chunks/app/core/setting/defaultModel/page.js"
     ],
-    "/core/setting/about/page": [
+    "/core/setting/ai/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/about/page.js"
+      "static/chunks/app/core/setting/ai/page.js"
     ]
   }
 }

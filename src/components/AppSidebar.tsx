@@ -20,12 +20,16 @@ import {
 	Settings,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import { Store } from "@tauri-apps/plugin-store";
+import { useSidebarStore } from "@/stores/sidebar";
 
 const AppSidebar = () => {
 	const t = useTranslations();
 	const pathname = usePathname();
+	const router = useRouter();
+	const { toggleFileSidebar } = useSidebarStore();
 	const items = [
 		{
 			title: t("navigation.record"),
@@ -50,8 +54,14 @@ const AppSidebar = () => {
 		},
 	];
 
-	const menuHandler = (item: (typeof items)[0]) => {
-		console.log(item);
+	const menuHandler = async (item: (typeof items)[0]) => {
+		if (pathname === "/core/article" && item.url === "/core/article") {
+			toggleFileSidebar();
+		} else {
+			router.push(item.url);
+		}
+		const store = await Store.load("store.json");
+		await store.set("currentPage", item.url);
 	};
 	return (
 		<Sidebar
@@ -96,6 +106,7 @@ const AppSidebar = () => {
 			<SidebarFooter>
 				<SidebarMenuButton
 					asChild
+					isActive={pathname === "/core/setting"}
 					tooltip={{
 						children: t("common.settings"),
 						hidden: false,

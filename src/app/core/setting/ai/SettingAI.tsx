@@ -22,6 +22,7 @@ import { Slider } from "@/components/ui/slider";
 import { v4 } from "uuid";
 import { confirm } from "@tauri-apps/plugin-dialog";
 import ModelSelect from "./ModelSelect";
+import AICheck from "./AICheck";
 
 interface SettingAIProps {
 	id: string;
@@ -210,6 +211,7 @@ const SettingAI = ({ id, icon }: SettingAIProps) => {
 						>
 							<SelectTrigger className="w-[240px] flex">
 								<div className="flex items-center gap-2">
+									<AICheck />
 									<SelectValue placeholder="Select a fruit" />
 								</div>
 							</SelectTrigger>

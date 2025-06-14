@@ -65,13 +65,13 @@ interface SettingState {
 	setDarkMode: (darkMode: string) => void;
 
 	previewTheme: string;
-	setPreviewTheme: (previewTheme: string) => void;
+	setPreviewTheme: (previewTheme: string) => Promise<void>;
 
 	codeTheme: string;
-	setCodeTheme: (codeTheme: string) => void;
+	setCodeTheme: (codeTheme: string) => Promise<void>;
 
 	tesseractList: string;
-	setTesseractList: (tesseractList: string) => void;
+	setTesseractList: (tesseractList: string) => Promise<void>;
 
 	// Github 相关设置
 	githubUsername: string;
@@ -108,6 +108,9 @@ interface SettingState {
 
 	workspacePath: string;
 	setWorkspacePath: (path: string) => Promise<void>;
+
+	proxy: string;
+	setProxy: (proxy: string) => Promise<void>;
 }
 
 const useSettingStore = create<SettingState>((set, get) => ({
@@ -237,13 +240,25 @@ const useSettingStore = create<SettingState>((set, get) => ({
 	setDarkMode: (darkMode) => set({ darkMode }),
 
 	previewTheme: "github",
-	setPreviewTheme: (previewTheme) => set({ previewTheme }),
+	setPreviewTheme: async (previewTheme) => {
+		set({ previewTheme });
+		const store = await Store.load("store.json");
+		store.set("previewTheme", previewTheme);
+	},
 
 	codeTheme: "github",
-	setCodeTheme: (codeTheme) => set({ codeTheme }),
+	setCodeTheme: async (codeTheme) => {
+		set({ codeTheme });
+		const store = await Store.load("store.json");
+		store.set("codeTheme", codeTheme);
+	},
 
 	tesseractList: "eng,chi_sim",
-	setTesseractList: (tesseractList) => set({ tesseractList }),
+	setTesseractList: async (tesseractList) => {
+		set({ tesseractList });
+		const store = await Store.load("store.json");
+		await store.set("tesseractList", tesseractList);
+	},
 
 	githubUsername: "",
 	setGithubUsername: async (githubUsername) => {
@@ -325,6 +340,13 @@ const useSettingStore = create<SettingState>((set, get) => ({
 		set({ primaryBackupMethod: method });
 		const store = await Store.load("store.json");
 		await store.set("primaryBackupMethod", method);
+	},
+
+	proxy: "",
+	setProxy: async (proxy: string) => {
+		set({ proxy });
+		const store = await Store.load("store.json");
+		await store.set("proxy", proxy);
 	},
 }));
 

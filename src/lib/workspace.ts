@@ -80,3 +80,12 @@ export async function toWorkspaceRelativePath(path: string): Promise<string> {
 	// 如果路径已经是相对路径，直接返回
 	return path;
 }
+
+/**
+ * 滚动到底部
+ */
+export function scrollToBottom() {
+	const md = document.querySelector("#chats-wrapper");
+	if (!md) return;
+	md.scrollTo(0, md.scrollHeight);
+}

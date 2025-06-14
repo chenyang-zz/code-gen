@@ -476,6 +476,10 @@
 				"chatLanguage": {
 					"tooltip": "选择对话语言",
 					"placeholder": "搜索语言"
+				},
+				"rag": {
+					"enabled": "知识库检索（开启）",
+					"disabled": "知识库检索（关闭）"
 				}
 			},
 			"header": {

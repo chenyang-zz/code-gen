@@ -1,4 +1,8 @@
 {
+  "app/core/record/chat/ChatInput.tsx -> @/lib/rag": {
+    "id": "app/core/record/chat/ChatInput.tsx -> @/lib/rag",
+    "files": []
+  },
   "components/AppStatus.tsx -> @/lib/gitee": {
     "id": "components/AppStatus.tsx -> @/lib/gitee",
     "files": [
@@ -27,6 +31,12 @@
     "id": "db/index.ts -> ./tags",
     "files": [
       "static/chunks/_app-pages-browser_src_db_tags_ts.js"
+    ]
+  },
+  "db/index.ts -> ./vector": {
+    "id": "db/index.ts -> ./vector",
+    "files": [
+      "static/chunks/_app-pages-browser_src_db_vector_ts.js"
     ]
   }
 }

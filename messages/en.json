@@ -506,6 +506,10 @@
 				"chatLanguage": {
 					"tooltip": "Select chat language",
 					"placeholder": "Search language"
+				},
+				"rag": {
+					"enabled": "Knowledge Base Search (Enabled)",
+					"disabled": "Knowledge Base Search (Disabled)"
 				}
 			},
 			"header": {

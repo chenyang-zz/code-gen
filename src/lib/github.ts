@@ -71,7 +71,7 @@ export async function getFiles({
 		return null;
 	} catch (error) {
 		if ((error as GithubError).status !== 404) {
-			toast("查询失败", {
+			toast.error("查询失败", {
 				description: (error as GithubError).message,
 			});
 		}
@@ -118,7 +118,7 @@ export async function getUserInfo() {
 
 		throw new Error("获取用户信息失败");
 	} catch (error) {
-		toast("获取用户信息失败", {
+		toast.error("获取用户信息失败", {
 			description: (error as GithubError).message,
 		});
 		return null;
@@ -215,7 +215,7 @@ export async function createSyncRepo(name: string, isPrivate?: boolean) {
 			message: errorData.message || "创建仓库失败",
 		};
 	} catch (error) {
-		toast("创建仓库失败", {
+		toast.error("创建仓库失败", {
 			description: (error as GithubError).message,
 		});
 		return null;
