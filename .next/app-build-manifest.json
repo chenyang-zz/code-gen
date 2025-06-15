@@ -19,42 +19,8 @@
     "/core/record/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/core/record/page.css",
       "static/chunks/app/core/record/page.js"
-    ],
-    "/core/setting/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/layout.js"
-    ],
-    "/core/setting/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/page.js"
-    ],
-    "/core/setting/theme/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/theme/page.js"
-    ],
-    "/core/setting/template/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/template/page.js"
-    ],
-    "/core/article/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/article/page.js"
-    ],
-    "/core/setting/defaultModel/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/defaultModel/page.js"
-    ],
-    "/core/setting/ai/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/core/setting/ai/page.js"
     ]
   }
 }

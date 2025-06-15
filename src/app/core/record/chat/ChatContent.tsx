@@ -26,7 +26,7 @@ import ChatPreview from "./ChatPreview";
 import MessageControl from "./MessageControl";
 import NoteOutput from "./NoteOutput";
 import MarkText from "./MarkText";
-import { useMount, useUpdateEffect } from "@reactuses/core";
+import { useMount } from "@reactuses/core";
 import { scrollToBottom } from "@/lib/workspace";
 import useTagStore from "@/stores/tag";
 import { Button } from "@/components/ui/button";
@@ -81,7 +81,7 @@ const ChatContent = () => {
 			{!isOnBottom && (
 				<Button
 					variant="outline"
-					className="sticky bottom-0 size-4 right-0"
+					className="sticky bottom-0 size-8 right-0"
 					onClick={scrollToBottom}
 				>
 					<ArrowDownToLine className="size-4" />

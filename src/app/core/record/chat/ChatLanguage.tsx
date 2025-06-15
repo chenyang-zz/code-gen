@@ -19,7 +19,7 @@ import { Check, Globe } from "lucide-react";
 import { useTranslations } from "next-intl";
 import React, { useState } from "react";
 
-const languageOptions = [
+export const languageOptions = [
 	"English",
 	"中文",
 	"日本語",

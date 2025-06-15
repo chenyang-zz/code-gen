@@ -3,6 +3,8 @@ import ChatHeader from "./ChatHeader";
 import ChatContent from "./ChatContent";
 import ChatInput from "./ChatInput";
 
+import "./chat.scss";
+
 const Chat = () => {
 	return (
 		<main className="flex flex-col flex-1 relative items-center h-screen overflow-hidden dark:bg-zinc-950">

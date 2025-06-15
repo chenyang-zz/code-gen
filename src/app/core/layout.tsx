@@ -5,18 +5,41 @@ import { initAllDatabases } from "@/db";
 import useSettingStore from "@/stores/setting";
 import { useMount } from "@reactuses/core";
 import { ThemeProvider } from "next-themes";
+import dayjs from "dayjs";
+import zh from "dayjs/locale/zh-cn";
+import en from "dayjs/locale/en";
+import relativeTime from "dayjs/plugin/relativeTime";
+import { useI18n } from "@/hooks/useI18n,";
+import { useEffect } from "react";
 
+dayjs.extend(relativeTime);
 export default function CoreLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const { currentLocale } = useI18n();
 	const { initSettingData } = useSettingStore();
+
 	useMount(() => {
 		initSettingData();
 
 		initAllDatabases();
 	});
+
+	useEffect(() => {
+		switch (currentLocale) {
+			case "zh":
+				dayjs.locale(zh);
+				break;
+			case "en":
+				dayjs.locale(en);
+				break;
+			default:
+				break;
+		}
+	}, [currentLocale]);
+
 	return (
 		<ThemeProvider
 			attribute="class"

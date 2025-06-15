@@ -18,6 +18,7 @@ import {
 	SquarePen,
 	ImageUp,
 	Settings,
+	Mic,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
@@ -51,6 +52,11 @@ const AppSidebar = () => {
 			title: t("navigation.gallery"),
 			url: "/core/image",
 			icon: ImageUp,
+		},
+		{
+			title: "面试",
+			url: "/core/interview",
+			icon: Mic,
 		},
 	];
 

@@ -1,12 +1,10 @@
 "use client";
 
 import NextIntlProvider from "@/components/providers/NextIntlProvider";
-import relativeTime from "dayjs/plugin/relativeTime";
-import dayjs from "dayjs";
-import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 
-dayjs.extend(relativeTime);
+import { Toaster } from "@/components/ui/sonner";
+import "./globals.css";
+
 export default function RootLayout({
 	children,
 }: Readonly<{

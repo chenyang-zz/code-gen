@@ -582,12 +582,12 @@ async function prepareMessages(
  * 流式方式获取AI结果
  * @param text 请求文本
  * @param onUpdate 每次收到流式内容时的回调函数
- * @param abortSignal 用于终止请求的信号
+ * @param _abortSignal 用于终止请求的信号
  */
 export async function fetchAiStream(
 	text: string,
 	onUpdate: (content: string) => void,
-	abortSignal?: AbortSignal
+	_abortSignal?: AbortSignal
 ): Promise<string> {
 	try {
 		// 获取AI设置
@@ -644,6 +644,69 @@ export async function fetchAiStream(
 			}
 
 			return "";
+		}
+	} catch (error) {
+		return handleAIError(error) || "";
+	}
+}
+
+/**
+ * 翻译
+ */
+export async function fetchAiTranslate(
+	text: string,
+	targetLanguage: string
+): Promise<string> {
+	try {
+		// 获取AI设置
+		const { model, temperature, topP } = await getAISettings();
+
+		// 构建翻译提示词
+		const translationPrompt = `Translate the following text to ${targetLanguage}. Maintain the original formatting, markdown syntax, and structure:`;
+
+		const translateModel = await Store.get<string>("translateModel");
+		const modelInfo = await getModelInfo(translateModel || "");
+
+		// 准备消息
+		const { messages, geminiText } = await prepareMessages(
+			`${translationPrompt}\n\n${text}`,
+			modelInfo?.key || "openai",
+			false
+		);
+
+		// 根据不同AI类型构建请求
+		if (modelInfo?.key === "gemini") {
+			// 创建Gemini客户端
+			const genAI = await createGeminiClient(modelInfo);
+
+			const result = await genAI.models.generateContent({
+				model: modelInfo?.model || model,
+				contents: {
+					parts: [
+						{
+							text:
+								geminiText || `${translationPrompt}\n\n${text}`,
+						},
+					],
+				},
+				config: {
+					temperature: modelInfo?.temperature || temperature,
+					topP: modelInfo?.topP || topP,
+				},
+			});
+
+			return result.text || "";
+		} else {
+			const openai = await createOpenAIClient(modelInfo);
+
+			const completion = await openai.chat.completions.create({
+				model: modelInfo?.model || model,
+				messages: messages,
+				temperature: modelInfo?.temperature || temperature,
+				top_p: modelInfo?.topP || topP,
+			});
+
+			return completion.choices[0]?.message?.content || "";
 		}
 	} catch (error) {
 		return handleAIError(error) || "";
